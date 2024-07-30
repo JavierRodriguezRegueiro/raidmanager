@@ -29,6 +29,6 @@ public class InMemoryItemRepository implements ItemRepository {
     public List<Item> findBySlotAndClass(Slot slot, Class availableClass) {
         System.out.println(slot.toString());
         System.out.println(availableClass.toString());
-        return items.stream().filter(item -> item.getSlot().equals(slot) && item.getAvailableTo().stream().anyMatch(availableClassFromItem -> availableClassFromItem.equals(availableClass))).collect(Collectors.toList());
+        return items.stream().filter(item -> item.slot().equals(slot) && item.availableTo().stream().anyMatch(availableClassFromItem -> availableClassFromItem.equals(availableClass))).collect(Collectors.toList());
     }
 }

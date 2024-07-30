@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
@@ -33,7 +32,7 @@ public class ItemPostController {
             ArrayList<com.bastion.raidmanager.src.item.domain.Class> availableTo = (ArrayList<Class>) request.getAvailableTo().stream().map(string -> {
                 return Class.valueOf(string);
             }).collect(Collectors.toList());
-            itemCreator.create(Id.fromString(id), request.getName(), Slot.valueOf(request.getSlot()), request.getMaterial(), statistics, availableTo, request.getDescription());
+            itemCreator.create(Id.fromString(id), request.getName(), Slot.valueOf(request.getSlot()), request.getMaterial(), statistics, availableTo, request.getDescription(), Raid.valueOf(request.getRaid()));
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
             System.out.println(e.getMessage());

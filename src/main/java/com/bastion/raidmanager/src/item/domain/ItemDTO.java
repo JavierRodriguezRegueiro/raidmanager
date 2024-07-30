@@ -12,8 +12,9 @@ public class ItemDTO {
     private List<StatisticDTO> statistics;
     private List<String> availableTo;
     private String description;
+    private String raid;
 
-    public ItemDTO(Id id, String name, String slot, String material, List<StatisticDTO> statistics, List<String> availableTo, String description) {
+    public ItemDTO(Id id, String name, String slot, String material, List<StatisticDTO> statistics, List<String> availableTo, String description, String raid) {
         this.id = id;
         this.name = name;
         this.slot = slot;
@@ -21,6 +22,7 @@ public class ItemDTO {
         this.statistics = statistics;
         this.availableTo = availableTo;
         this.description = description;
+        this.raid = raid;
     }
 
     public Id getId() {
@@ -51,6 +53,10 @@ public class ItemDTO {
         return description;
     }
 
+    public String getRaid() {
+        return raid;
+    }
+
     public void setId(Id id) {
         this.id = id;
     }
@@ -77,5 +83,9 @@ public class ItemDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setRaid(String raid) {
+        this.raid = raid;
     }
 }

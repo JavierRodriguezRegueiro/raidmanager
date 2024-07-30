@@ -26,7 +26,7 @@ public class ItemFindBySlotAndClassController {
     @GetMapping("/items/available")
     public ResponseEntity<ArrayList<ItemDTO>> findItemBySlotAndClass(@RequestParam String slot, @RequestParam String className) {
         return ResponseEntity.ok().body((ArrayList<ItemDTO>) itemFindBySlotAndClass.findBySlotAndClass(Slot.valueOf(slot), Class.valueOf(className)).stream().map(item -> {
-            return new ItemDTO(item.getId(), item.getName(), item.getSlot().toString(), item.getMaterial(), item.getStatistics().stream().map(statistic -> new StatisticDTO(statistic.getAttribute().toString(), statistic.getValue())).collect(Collectors.toList()), item.getAvailableTo().stream().map(Class::toString).collect(Collectors.toList()), item.getDescription());
+            return new ItemDTO(item.id(), item.name(), item.slot().toString(), item.material(), item.statistics().stream().map(statistic -> new StatisticDTO(statistic.getAttribute().toString(), statistic.getValue())).collect(Collectors.toList()), item.availableTo().stream().map(Class::toString).collect(Collectors.toList()), item.description());
         }).collect(Collectors.toList()));
     }
 }
